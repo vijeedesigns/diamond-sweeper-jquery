@@ -1,0 +1,5 @@
+20180616 21:30
+conversion from angular to jquery
+
+20180616 23:00
+files moved to git
