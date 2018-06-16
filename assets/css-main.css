@@ -1,0 +1,271 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Raleway:300,400,500,600,700,800,900');
+
+* {
+	box-sizing: border-box;
+}
+body {
+	margin: 0;
+	/*font-family: 'Raleway', sans-serif;*/
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	background-color: #CFD8DC;
+}
+
+
+.main-wrap {
+
+}
+.main-wrap header {
+	text-align: center;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 300;
+	font-size: 40px;
+	color: #3F51B5;
+	padding: 20px 10px;
+}
+.main-wrap .content-wrap {
+
+}
+.main-wrap .diamond-box-wrap {
+	position: relative;
+    max-width: 90%;
+    width: 640px;
+    margin: 0 auto;
+}
+.main-wrap .diamond-box-wrap:before {
+	display: block;
+	padding: 50%;
+	content: '';
+}
+.main-wrap .diamond-box-container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+    flex-wrap: wrap;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 10px 30px -15px #607D8B;
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.main-wrap .diamond-box-container.complete .diamond-box {
+	pointer-events: none;
+}
+.main-wrap .diamond-box-container.complete .bomb {
+	opacity: 0.2;
+	transform: scale(0.5,0.5);	
+}
+.main-wrap .diamond-box {
+	width: calc(12.5% - 2px);
+    height: calc(12.5% - 2px);
+    margin: 1px;
+    border: 1px solid #ECEFF1;
+    border-radius: 2px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+    position: relative;
+}
+.main-wrap .diamond-box:hover {
+	background-color: #ECEFF1;
+	border: 1px solid #e0e6e8;
+}
+.main-wrap .diamond-box * {
+	pointer-events: none;
+}
+.main-wrap .diamond-box.clicked {
+	pointer-events: none;
+}
+.main-wrap .diamond-box .index {
+	display: none;
+}
+.main-wrap .diamond-box .bomb {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	padding-top: 14%;
+	transition: all 0.2s ease-out;
+	transform: scale(1,1);
+}
+.main-wrap .diamond-box.clicked .bomb {
+	opacity: 0.2;
+	transform: scale(0.5,0.5);
+}
+.main-wrap .diamond-box.clicked.success .bomb {
+	opacity: 0;
+}
+.main-wrap .diamond-box .bomb img {
+    width: 70%;
+}
+.main-wrap .diamond-box .diamond {
+	opacity: 0;
+	padding-top: 14%;
+	transition: all 0.2s ease-out;
+	transform: scale(0.5,0.5);
+}
+.main-wrap .diamond-box.success .diamond {
+	opacity: 1;
+	transform: scale(1,1);
+}
+.main-wrap .diamond-box .diamond img {
+	width: 70%;
+}
+.main-wrap .diamond-box .diamond-arrow-left {
+	position: absolute;
+    left: calc(-100% + -4px);
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    padding-top: 14%;
+    opacity: 0;
+    transition: all 0.2s ease-out;
+}
+.main-wrap .diamond-box .diamond-arrow-left.show {
+	opacity: 1;
+}
+.main-wrap .diamond-box .diamond-arrow-left img {
+	width: 70%;
+	animation: diamond-arrow-left-anim 0.4s ease-out infinite;
+}
+@keyframes diamond-arrow-left-anim {
+	0% {
+		transform: translateX(0px);
+	}
+	50% {
+		transform: translateX(20px);
+	}
+	100% {
+		transform: translateX(0px);
+	}
+}
+
+
+.game-complete-box,
+.game-over-box {
+    width: 100%;
+	height: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 0;
+    text-align: center;
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    opacity: 0;
+}
+.game-complete-box.show,
+.game-over-box.show {
+	pointer-events: visible;
+    opacity: 1;
+}
+.game-complete-box h1,
+.game-over-box h1 {
+	font-family: 'Raleway', sans-serif;
+	font-weight: 300;
+	font-size: 40px;
+	margin: 15px 0;
+}
+.game-complete-box h1 {
+	color: #4CAF50;
+}
+.game-over-box h1 {
+	color: #ef5350;
+}
+.game-complete-box h4 {
+	font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: #607D8B;
+    margin: 15px 0;
+}
+.game-complete-box .success-points {
+	font-size: 40px;
+    display: block;
+}
+.game-complete-box .btn-start-again,
+.game-over-box .btn-start-again {
+	display: inline-block;
+	border-radius: 2px;
+	border:none;
+	padding: 15px 30px;
+	font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+	background-color: #42A5F5;
+	color: #fff;
+	cursor: pointer;
+	transition: all 0.2s ease-out;
+}
+.game-complete-box .btn-start-again:hover,
+.game-over-box .btn-start-again:hover {	
+	box-shadow: 0 10px 30px -10px #42A5F5;
+}
+
+.main-wrap footer {
+	text-align: center;
+	padding: 10px 0;
+	color: #78909C;
+}
+
+.main-wrap .prevoius-log {
+    max-width: 90%;
+	width: 640px;
+	margin: 0 auto;
+	display: flex;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+.main-wrap .prevoius-log .log {
+	width: 100px;
+	height: 80px;
+	padding: 10px;
+	border: 1px solid #B0BEC5;
+	border-radius: 3px;
+	margin: 5px;
+	background-color: #ECEFF1;
+	box-shadow: 0 10px 30px -10px #90A4AE;
+}
+.main-wrap .prevoius-log .datetime {
+	font-size: 10px;
+	color: #607D8B;
+	margin: 0 -5px;
+}
+.main-wrap .prevoius-log .points {
+	font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+	font-size: 30px;
+	margin: 5px 0;
+	color: #2196F3;
+}
+
+
+@media (max-width:768px) {
+	.main-wrap header {
+		font-size: 30px;
+	}
+}
+@media (max-width:480px) {
+	.main-wrap .prevoius-log .log {
+		width: 100%;
+	}
+	.main-wrap .prevoius-log .points {
+		font-size: 20px;
+	}
+	.main-wrap .prevoius-log .log {
+		height: 65px;
+	}
+}

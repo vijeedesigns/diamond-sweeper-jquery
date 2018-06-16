@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>DiamondSweeper</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="assets/css-main.css" />
+</head>
+<body>
+	<div class="main-wrap">
+	    <header>Diamond Sweeper</header>
+	    <section class="content-wrap">
+	        <div class="diamond-box-wrap">
+	            <div class="diamond-box-container" id="diamond-box-container">
+	                <div class="diamond-box" *ngFor="let box of game.boxes;" (click)="game.click_diamond_box(box);">
+	                    <div class="index">{{box.id}}</div>
+	                    <div class="bomb"><img src="assets/bomb.png" /></div>
+	                    <div class="diamond" *ngIf="box.is_diamond"><img src="assets/diamond.png" /></div>
+	                    <div class="diamond-arrow-left"><img src="assets/arrow-right.png" /></div>
+	                </div>
+	            </div>
+	            <div class="game-complete-box">
+	                <h1>Success !</h1>
+	                <h4>Your Points: <span class="success-points"></span></h4>
+	                <button type="button" class="btn-start-again" onclick="game.start_again()">Start Again</button>
+	            </div>
+	            <div class="game-over-box">
+	                <h1>Game over !</h1>
+	                <button type="button" class="btn-start-again" onclick="game.start_again()">Start Again</button>
+	            </div>
+	        </div>
+	    </section>
+	    <footer>
+	        <code>Clicks:<span id="click_count">0</span>, Success:<span id="success_count">0</span></code>
+	    </footer>
+	    <div class="prevoius-log">
+	        <div class="log" *ngFor="let log of game.saved_logs">
+	            <div class="datetime">{{log.time | date:'short'}}</div>
+	            <div class="points">{{log.points}}</div>
+	        </div>
+	    </div>
+	</div>
+
+	<script type="text/javascript" src="assets/jquery-1.9.1.js"></script>
+	<script type="text/javascript" src="assets/js-main.js"></script>
+</body>
+</html>
